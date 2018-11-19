@@ -2,13 +2,15 @@
 Dockerized weather app made with node.js. 
 Build runs in dockerized Jenkins.
 
-How to run (open command line):
+## How to run (open command line):
+```
 cd full/path/to/weather-jenkins
 docker-compose build
 docker-compose up
+```
 
-App:
+## App:
 localhost:8083
 
-Jenkins:
+## Jenkins:
 localhost:8080
