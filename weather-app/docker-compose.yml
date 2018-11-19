@@ -1,0 +1,10 @@
+# version: "3.3"
+# services:
+#   weather-app-service:
+#     build: .
+#     volumes:
+#       - .:/app
+#     ports:
+#       - '8083:3003'
+
+

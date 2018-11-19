@@ -1,0 +1,38 @@
+version: "3.3"
+services:
+  weather-app-service:
+    build: ./weather-app
+    volumes:
+      - ./weather-app:/app
+    ports:
+      - '8083:3003'
+
+  jenkins-in-docker:
+    image: jenkins-in-docker
+    build: ./jenkins-in-docker
+    volumes:
+      - $PWD:/var/lib/jenkins
+      - /var/run/docker.sock:/var/run/docker.sock
+      - $PWD/jenkins_home:/var/jenkins_home
+    hostname: jenkins
+    ports:
+      - 8080:8080
+    networks:
+      - jenkins_net
+    restart: always
+    depends_on: 
+      - weather-app-service
+  sonar:
+    image: sonarqube
+    hostname: sonar
+    ports:
+      - 9000:9000
+      - 9092:9092
+    restart: always
+    networks:
+      - jenkins_net
+networks:
+    jenkins_net:
+
+
+
