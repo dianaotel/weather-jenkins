@@ -13,7 +13,7 @@ pipeline {
         
     stage('Start node server') {
       steps {
-         sh 'cd ./weather-app'
+         sh 'cd /var/jenkins_home/workspace/test/weather-app'
          sh 'npm install'
          sh 'node server.js'
       }
