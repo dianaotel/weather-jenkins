@@ -1,0 +1,12 @@
++ npm -d start
+npm info it worked if it ends with ok
+npm info using npm@6.4.1
+npm info using node@v11.1.0
+npm info lifecycle weather-app@1.0.0~prestart: weather-app@1.0.0
+npm info lifecycle weather-app@1.0.0~start: weather-app@1.0.0
+
+> weather-app@1.0.0 start /var/jenkins_home/workspace/test-weather-app
+> node server.js
+
+App listening on port 3003!
+Terminated
