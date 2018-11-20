@@ -1,0 +1,57 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.19">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@1.2.9"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@1.2.9">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+      <triggers>
+        <com.cloudbees.jenkins.GitHubPushTrigger plugin="github@1.29.0">
+          <spec></spec>
+        </com.cloudbees.jenkins.GitHubPushTrigger>
+      </triggers>
+    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.29.0">
+      <projectUrl>https://github.com/dianaotel/weather-jenkins/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.48">
+    <script>pipeline {
+  agent any
+    
+  tools {nodejs &quot;node&quot;}
+    
+  stages {
+        
+    stage(&apos;Cloning Git&apos;) {
+      steps {
+        git &apos;https://github.com/dianaotel/weather-jenkins.git&apos;
+      }
+    }
+        
+    stage(&apos;Build&apos;) {
+      steps {
+         sh &apos;npm install&apos;
+      }
+    }
+    
+    stage(&apos;Deploy&apos;) {
+        steps {
+            sh &apos;npm run&apos;
+        }
+    }
+  }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
