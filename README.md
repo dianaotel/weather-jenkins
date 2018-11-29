@@ -5,7 +5,9 @@ Build runs in dockerized Jenkins.
 ## How to run (open command line):
 ```
 cd full/path/to/weather-jenkins
+
 docker-compose build
+
 docker-compose up
 ```
 
